@@ -1,10 +1,10 @@
 parameters:
   deploy.deployments:
-      spiegami:
+      deeploy:
         composer:
           path: './composer.phar'
           flags: ['prefer-dist', 'no-interaction', 'no-progress']
-        path: './example/deployments/spiegami.it'
+        path: './example/deployments/deeploy'
         repository: 'https://github.com/skedone/deeploy.git'
 
 services:
