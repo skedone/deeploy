@@ -2,9 +2,9 @@ parameters:
   deploy.deployments:
       spiegami:
         composer:
-          path: '/var/bucket/nimbos.it/composer.phar'
+          path: './composer.phar'
           flags: ['prefer-dist', 'no-interaction', 'no-progress']
-        path: '/var/bucket/nimbos.it/opensource/deeploy/example/deployments/spiegami.it'
+        path: './example/deployments/spiegami.it'
         repository: 'https://github.com/skedone/deeploy.git'
 
 services:
