@@ -1,0 +1,24 @@
+{
+    "name": "nimbos/deeploy",
+    "authors": [
+        {
+            "name": "Edoardo Biraghi",
+            "email": "edoardo.biraghi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+      "psr-4": {
+        "Deeploy\\": "src/"
+      }
+    },
+    "require": {
+        "react/child-process": "~0.4",
+        "react/http": "^0.4.1",
+        "cpliakas/git-wrapper": "1.4.1"
+    },
+    "require-dev": {
+        "codeception/codeception": "*"
+    }
+}

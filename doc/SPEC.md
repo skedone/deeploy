@@ -1,0 +1,4 @@
+- Pull from repository
+- Run composer
+- Remove .git directory
+- Test an endpoint
