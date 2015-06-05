@@ -5,11 +5,25 @@ set_time_limit(0);
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$loop = React\EventLoop\Factory::create();
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use \Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+
+$container = new ContainerBuilder();
+$container->register('Deeploy')->addArgument('%deploy%');
+
+$configurationDirectory = new FileLocator(['bin/config']);
+$loader = new YamlFileLoader($container, $configurationDirectory);
+$loader->load('config.yml');
+
+$loop = $container->get('react.loop');
+$deployments = $container->get('deploy.collection');
+
 $socket = new React\Socket\Server($loop);
 
 $http = new React\Http\Server($socket);
-$http->on('request', function ($request, $response) {
+$http->on('request', function ($request, $response) use ($deployments) {
+    $deployments->deploy();
     $response->writeHead(200, array('Content-Type' => 'application/json'));
     $res = [
         'status' => 'success',
